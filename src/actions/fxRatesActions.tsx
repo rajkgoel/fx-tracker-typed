@@ -1,19 +1,20 @@
 import { FxRateProps, RateProps } from "../components/classes/FxRates";
+import { RatesActionTypes } from "../constants/types";
 
-interface FilterRatesAction {
-    type: 'FILTER_RATES';
+export interface FilterRatesAction {
+    type: RatesActionTypes.FILTER_RATES;
     selectedFx: string;
 }
 
-interface GetRatesAction {
-    type: 'GET_RATES';
+export interface GetRatesAction {
+    type: RatesActionTypes.GET_RATES;
     rates: FxRateProps[];
 }
 
 export type RatesActions = FilterRatesAction | GetRatesAction;
 
 export function filterRates(fxCurrency: string) {
-    return { type: 'FILTER_RATES', selectedFx: fxCurrency }
+    return { type: RatesActionTypes.FILTER_RATES, selectedFx: fxCurrency }
 }
 
 export function getRates() {
@@ -39,7 +40,7 @@ export function getRates() {
     fxRate1.rates.push(rate3);
 
     rates.push(fxRate1);
-    return { type: 'GET_RATES', rates: rates}
+    return { type: RatesActionTypes.GET_RATES, rates: rates}
 }
 
 

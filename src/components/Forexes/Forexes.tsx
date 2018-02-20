@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from "react-redux";
-import { filterRates, getRates } from "../../actions/fxRatesActions";
-import { ActionType, RatesStateType } from "../../constants/types";
+import { filterRates, getRates, RatesActions, FilterRatesAction, GetRatesAction } from "../../actions/fxRatesActions";
+import { RatesStateType, RatesActionTypes } from "../../constants/types";
 //import C3Chart from 'react-c3js';
 import { RateProps, FxRateProps, ForexSelectProps } from '../classes/FxRates';
 import { Dispatch } from 'redux';
@@ -105,8 +105,8 @@ export class ForexSelect extends React.Component<ForexSelectProps & DispatchProp
 }
 
 interface DispatchProps {
-    filterRates(fxCurrency: string): ActionType<string>;
-    getRates(): ActionType<{}>;
+    filterRates(fxCurrency: string) : FilterRatesAction; //ActionType<string>;
+    getRates():  GetRatesAction; //ActionType<{}>;
   }
   
 
@@ -117,13 +117,21 @@ const mapStateToProps = (state: ForexSelectProps) => {
     };
 }
 
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        filterRates: (fxCurrency: string) => dispatch(filterRates(fxCurrency)),
+        getRates: () => dispatch(getRates())
+    }
+}
+
+/*
 const mapDispatchToProps = (dispatch: Dispatch<string>): DispatchProps => {
     return {
       filterRates: (fxCurrency: string) => dispatch(filterRates(fxCurrency)),
       getRates: () => dispatch(getRates())
     };
   };
-
+*/
 const ForexSelectContainer = connect<ForexSelectProps, DispatchProps, {}>
                                 (mapStateToProps, mapDispatchToProps)
                                 (ForexSelect);
