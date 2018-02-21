@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers/fxRatesReducers';
 import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import { ForexSelectProps } from '../components/classes/FxRates';
+import { ForexSelectState } from '../components/classes/FxRates';
 import { createBrowserHistory } from 'history';
 
 const history = createHistory();
@@ -18,9 +18,9 @@ export default function configureStore(initialState = {}) {
     //console.log('Inside store->configureStore', initialState);
     const history  = createBrowserHistory();
 
-    return createStore<ForexSelectProps>(
+    return createStore<ForexSelectState>(
         rootReducer,
-        initialState as ForexSelectProps,
+        initialState as ForexSelectState,
         applyMiddleware(thunk, routerMiddleware(history), logger)
     );
 }

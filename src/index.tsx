@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
 
 import ForexSelectContainer from "./components/Forexes/Forexes";
-import { FxRateProps, RateProps } from "./components/classes/FxRates";
+import { FxRate, Rate } from "./components/classes/FxRates";
 import { createBrowserHistory } from 'history';
 import configureStore  from './store';
 

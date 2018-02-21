@@ -1,7 +1,7 @@
-import { ForexSelectProps } from "../components/classes/FxRates";
+import { ForexSelectState } from "../components/classes/FxRates";
 
 export interface RatesState {
-    rates: ForexSelectProps;
+    rates: ForexSelectState;
 }
 
 export type RatesStateType = RatesState;

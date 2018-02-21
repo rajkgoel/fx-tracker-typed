@@ -1,14 +1,14 @@
-export interface RateProps{
+export interface Rate{
     date: Date;
     rate: number;
 }
 
-export interface FxRateProps{
+export interface FxRate {
     fxCurrency: string;
-    rates: RateProps[];
+    rates: Rate[];
 }
 
-export interface ForexSelectProps {
+export interface ForexSelectState {
     selectedFx: string;
-    fxRates: FxRateProps[];
+    fxRates: FxRate[];
 }
