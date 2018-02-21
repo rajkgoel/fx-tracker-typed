@@ -13,11 +13,11 @@ export interface GetRatesAction {
 
 export type RatesActions = FilterRatesAction | GetRatesAction;
 
-export function filterRates(fxCurrency: string) {
+export function filterRates(fxCurrency: string) : FilterRatesAction {
     return { type: RatesActionTypes.FILTER_RATES, selectedFx: fxCurrency }
 }
 
-export function getRates() {
+export function getRates() : GetRatesAction {
     let rates: FxRateProps[] = [];
 
     var rate : RateProps = { date: new Date(2018, 2, 5), rate: 65 };

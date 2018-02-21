@@ -86,27 +86,26 @@ export class ForexSelect extends React.Component<ForexSelectProps & DispatchProp
         );
         //console.log('Props: ', this.props);
         return <div>
-            
-            <div className="w3-row">
-                <div className="w3-col">
-                    <select value={this.props.selectedFx} 
-                            onChange={this.handleFxCurrencyChange}
-                            className="w3-select w3-border w3-round w3-light-grey">
-                        <option value="ALL" key="ALL">ALL</option>
-                        {fxCurrencies}
-                    </select>
+                <div className="w3-row">
+                    <div className="w3-col">
+                        <select value={this.props.selectedFx} 
+                                onChange={this.handleFxCurrencyChange}
+                                className="w3-select w3-border w3-round w3-light-grey">
+                            <option value="ALL" key="ALL">ALL</option>
+                            {fxCurrencies}
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div className="w3-row">
-                <Forexes selectedFx={this.props.selectedFx} fxRates={this.props.fxRates}/>
-            </div>
+                <div className="w3-row">
+                    <Forexes selectedFx={this.props.selectedFx} fxRates={this.props.fxRates}/>
+                </div>
             </div>
     }
 }
 
 interface DispatchProps {
-    filterRates(fxCurrency: string) : FilterRatesAction; //ActionType<string>;
-    getRates():  GetRatesAction; //ActionType<{}>;
+    filterRates(fxCurrency: string) : FilterRatesAction; 
+    getRates():  GetRatesAction;
   }
   
 
@@ -117,23 +116,14 @@ const mapStateToProps = (state: ForexSelectProps) => {
     };
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<RatesActions>) => {
     return {
         filterRates: (fxCurrency: string) => dispatch(filterRates(fxCurrency)),
         getRates: () => dispatch(getRates())
-    }
+    }   
 }
 
-/*
-const mapDispatchToProps = (dispatch: Dispatch<string>): DispatchProps => {
-    return {
-      filterRates: (fxCurrency: string) => dispatch(filterRates(fxCurrency)),
-      getRates: () => dispatch(getRates())
-    };
-  };
-*/
-const ForexSelectContainer = connect<ForexSelectProps, DispatchProps, {}>
-                                (mapStateToProps, mapDispatchToProps)
+const ForexSelectContainer = connect(mapStateToProps, mapDispatchToProps)
                                 (ForexSelect);
 
 export default ForexSelectContainer;
