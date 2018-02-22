@@ -5,8 +5,6 @@ import { RatesActions, DispatchProps }  from "../actions/fxRatesActions";
 const initialState: ForexSelectState = { selectedFx: 'ALL', fxRates: [] };
 
 const ratesReducer = (state=initialState, action: RatesActions): ForexSelectState => {
-            //console.log('State: ', state);
-            //console.log('Action: ', action);
             switch (action.type) {
                 case RatesActionTypes.FILTER_RATES:
                     return {
