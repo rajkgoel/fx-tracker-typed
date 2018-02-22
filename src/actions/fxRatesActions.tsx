@@ -1,28 +1,28 @@
 import { FxRate, Rate } from "../components/classes/FxRates";
 import { RatesActionTypes } from "../constants/types";
 
-interface FilterRatesAction {
+interface FilterRatesActionReturnType {
     type: RatesActionTypes.FILTER_RATES;
     selectedFx: string;
 }
 
-interface GetRatesAction {
+interface GetRatesActionReturnType {
     type: RatesActionTypes.GET_RATES;
     rates: FxRate[];
 }
 
-export type RatesActions = FilterRatesAction | GetRatesAction;
+export type RatesActionsReturnType = FilterRatesActionReturnType | GetRatesActionReturnType;
 
-export interface DispatchProps {
-    filterRates(fxCurrency: string) : FilterRatesAction; 
-    getRates():  GetRatesAction;
+export interface RatesActions {
+    filterRates(fxCurrency: string) : FilterRatesActionReturnType; 
+    getRates():  GetRatesActionReturnType;
   }
 
-export function filterRates(fxCurrency: string) : FilterRatesAction {
+export function filterRates(fxCurrency: string) : FilterRatesActionReturnType {
     return { type: RatesActionTypes.FILTER_RATES, selectedFx: fxCurrency }
 }
 
-export function getRates() : GetRatesAction {
+export function getRates() : GetRatesActionReturnType {
     let rates: FxRate[] = [];
 
     var rate : Rate = { date: new Date(2018, 2, 5), rate: 65 };

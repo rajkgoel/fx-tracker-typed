@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { connect } from "react-redux";
-import { filterRates, getRates, DispatchProps } from "../../actions/fxRatesActions";
-import { RatesStateType, RatesActionTypes } from "../../constants/types";
-import { Rate, FxRate, ForexSelectState } from '../classes/FxRates';
-import { Dispatch } from 'redux';
+import { filterRates, getRates, RatesActions } from "../../actions/fxRatesActions";
+import { FxRate, ForexSelectInfo } from '../classes/FxRates';
 
-export class Forex extends React.Component<FxRate, {}> {
+class Forex extends React.Component<FxRate, {}> {
     render(){
         const fxCurrency = this.props.fxCurrency; 
         const fxRates = this.props.rates; 
@@ -17,7 +14,7 @@ export class Forex extends React.Component<FxRate, {}> {
     }
 }
 
-export class Forexes extends React.Component<ForexSelectState, {}> {
+class Forexes extends React.Component<ForexSelectInfo, {}> {
     render() {
         const selectedFxCurrency = this.props.selectedFx;
         const forexs = this.props.fxRates;
@@ -36,7 +33,7 @@ export class Forexes extends React.Component<ForexSelectState, {}> {
     }
 }
 
-export class ForexSelect extends React.Component<ForexSelectState & DispatchProps, {}> {
+export class ForexSelect extends React.Component<ForexSelectInfo & RatesActions, {}> {
     handleFxCurrencyChange = (e: any) => {
         this.props.filterRates(e.target.value ); 
     }
@@ -71,22 +68,3 @@ export class ForexSelect extends React.Component<ForexSelectState & DispatchProp
             </div>
     }
 }
-
-const mapStateToProps = (state: ForexSelectState) => {
-    return {
-        selectedFx: state.selectedFx,
-        fxRates: state.fxRates
-    };
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<DispatchProps>) => {
-    return {
-        filterRates: (fxCurrency: string) => dispatch(filterRates(fxCurrency)),
-        getRates: () => dispatch(getRates())
-    }   
-}
-
-const ForexSelectContainer = connect(mapStateToProps, mapDispatchToProps)
-                                (ForexSelect);
-
-export default ForexSelectContainer;

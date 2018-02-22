@@ -1,10 +1,10 @@
 import { RatesActionTypes } from "../constants/types";
-import { ForexSelectState, FxRate } from "../components/classes/FxRates";
-import { RatesActions, DispatchProps }  from "../actions/fxRatesActions";
+import { ForexSelectInfo, FxRate } from "../components/classes/FxRates";
+import { RatesActionsReturnType, RatesActions }  from "../actions/fxRatesActions";
 
-const initialState: ForexSelectState = { selectedFx: 'ALL', fxRates: [] };
+const initialState: ForexSelectInfo = { selectedFx: 'ALL', fxRates: [] };
 
-const ratesReducer = (state=initialState, action: RatesActions): ForexSelectState => {
+const ratesReducer = (state=initialState, action: RatesActionsReturnType): ForexSelectInfo => {
             switch (action.type) {
                 case RatesActionTypes.FILTER_RATES:
                     return {

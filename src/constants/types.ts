@@ -1,11 +1,3 @@
-import { ForexSelectState } from "../components/classes/FxRates";
-
-export interface RatesState {
-    rates: ForexSelectState;
-}
-
-export type RatesStateType = RatesState;
-
 export enum RatesActionTypes {
     FILTER_RATES = "FILTER_RATES",
     GET_RATES = "GET_RATES",

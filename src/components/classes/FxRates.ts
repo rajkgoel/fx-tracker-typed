@@ -8,7 +8,7 @@ export interface FxRate {
     rates: Rate[];
 }
 
-export interface ForexSelectState {
+export interface ForexSelectInfo {
     selectedFx: string;
     fxRates: FxRate[];
 }
