@@ -11,9 +11,8 @@ export class Forex extends React.Component<FxRate, {}> {
         const fxRates = this.props.rates; 
         return(
             <div key={fxCurrency}>
-                <h3 className="w3-text-cyan">{fxCurrency} (Spot Rate - {fxRates[fxRates.length-1].rate})</h3>
+                <h3>{fxCurrency} (Spot Rate - {fxRates[fxRates.length-1].rate})</h3>
             </div>
-            
         );
     }
 }
@@ -57,17 +56,16 @@ export class ForexSelect extends React.Component<ForexSelectState & DispatchProp
                             </option>
         );
         return <div>
-                <div className="w3-row">
-                    <div className="w3-col">
+                <div>
+                    <div >
                         <select value={this.props.selectedFx} 
-                                onChange={this.handleFxCurrencyChange}
-                                className="w3-select w3-border w3-round w3-light-grey">
+                                onChange={this.handleFxCurrencyChange}>
                             <option value="ALL" key="ALL">ALL</option>
                             {fxCurrencies}
                         </select>
                     </div>
                 </div>
-                <div className="w3-row">
+                <div>
                     <Forexes selectedFx={this.props.selectedFx} fxRates={this.props.fxRates}/>
                 </div>
             </div>
