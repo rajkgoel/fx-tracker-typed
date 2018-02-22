@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers/fxRatesReducers';
-import { ForexSelectInfo } from '../components/classes/FxRates';
+import { ForexSelectInfo } from '../classes/FxRates';
 
 const logger = createLogger();
 

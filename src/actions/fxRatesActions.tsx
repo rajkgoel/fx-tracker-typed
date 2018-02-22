@@ -1,4 +1,4 @@
-import { FxRate, Rate } from "../components/classes/FxRates";
+import { FxRate, Rate } from "../classes/FxRates";
 import { RatesActionTypes } from "../constants/types";
 
 interface FilterRatesActionReturnType {

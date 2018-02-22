@@ -1,4 +1,4 @@
-import { ForexSelectInfo } from "../classes/FxRates";
+import { ForexSelectInfo } from "../../classes/FxRates";
 import { Dispatch, connect } from "react-redux";
 import { RatesActions, filterRates, getRates } from "../../actions/fxRatesActions";
 import { ForexSelect } from "./Forexes";

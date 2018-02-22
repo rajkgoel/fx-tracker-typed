@@ -1,5 +1,5 @@
 import { RatesActionTypes } from "../constants/types";
-import { ForexSelectInfo, FxRate } from "../components/classes/FxRates";
+import { ForexSelectInfo, FxRate } from "../classes/FxRates";
 import { RatesActionsReturnType, RatesActions }  from "../actions/fxRatesActions";
 
 const initialState: ForexSelectInfo = { selectedFx: 'ALL', fxRates: [] };

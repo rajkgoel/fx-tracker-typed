@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { filterRates, getRates, RatesActions } from "../../actions/fxRatesActions";
-import { FxRate, ForexSelectInfo } from '../classes/FxRates';
+import { FxRate, ForexSelectInfo } from '../../classes/FxRates';
 
 class Forex extends React.Component<FxRate, {}> {
     render(){
