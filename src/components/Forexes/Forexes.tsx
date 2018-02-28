@@ -1,14 +1,30 @@
 import * as React from 'react';
-import { filterRates, getRates, RatesActions } from "../../actions/fxRatesActions";
+import { RatesActions } from "../../actions/fxRatesActions";
 import { FxRate, ForexSelectInfo } from '../../classes/FxRates';
 
 class Forex extends React.Component<FxRate, {}> {
     render(){
         const fxCurrency = this.props.fxCurrency; 
         const fxRates = this.props.rates; 
+        const rates1 = fxRates.map((r) => 
+                            <tr key={fxCurrency + r.date.getFullYear() + '-' + r.date.getMonth() + '-' + r.date.getDay()}>
+                                <td>{r.date.getFullYear() + '-' + r.date.getMonth()+ '-' + r.date.getDay()}</td>
+                                <td>{r.rate}</td>
+                            </tr>
+                        );
+                        
         return(
-            <div key={fxCurrency}>
-                <h3>{fxCurrency} (Spot Rate - {fxRates[fxRates.length-1].rate})</h3>
+            <div>
+                <h3 key={fxCurrency}>{fxCurrency} (Spot Rate - {fxRates[fxRates.length-1].rate})</h3>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>Date</th>
+                        <th>Rate</th>
+                    </tr>
+                    {rates1}
+                    </tbody>
+                </table>
             </div>
         );
     }
@@ -43,7 +59,6 @@ export class ForexSelect extends React.Component<ForexSelectInfo & RatesActions,
     }
 
     render(){
-        
         if (this.props.fxRates === undefined || this.props.fxRates.length === 0) {
             return <p>Loading Rates…please wait for a moment.....</p>; 
         }
@@ -53,18 +68,12 @@ export class ForexSelect extends React.Component<ForexSelectInfo & RatesActions,
                             </option>
         );
         return <div>
-                <div>
-                    <div >
-                        <select value={this.props.selectedFx} 
-                                onChange={this.handleFxCurrencyChange}>
-                            <option value="ALL" key="ALL">ALL</option>
-                            {fxCurrencies}
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <Forexes selectedFx={this.props.selectedFx} fxRates={this.props.fxRates}/>
-                </div>
+                <select value={this.props.selectedFx} 
+                        onChange={this.handleFxCurrencyChange}>
+                    <option value="ALL" key="ALL">ALL</option>
+                    {fxCurrencies}
+                </select>
+                <Forexes selectedFx={this.props.selectedFx} fxRates={this.props.fxRates}/>
             </div>
     }
 }

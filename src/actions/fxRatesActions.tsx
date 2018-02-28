@@ -23,29 +23,23 @@ export function filterRates(fxCurrency: string) : FilterRatesActionReturnType {
 }
 
 export function getRates() : GetRatesActionReturnType {
+    let rates = loadRates();
+    return { type: RatesActionTypes.GET_RATES, rates: rates}
+}
+
+function loadRates() : FxRate[]
+{
     let rates: FxRate[] = [];
-
-    var rate : Rate = { date: new Date(2018, 2, 5), rate: 65 };
-
-    var fxRate: FxRate = { fxCurrency: "USD-INR", rates: [] }; 
-    fxRate.rates.push(rate);
-
-    let rate1: Rate = { date : new Date(2018, 2, 6), rate: 64 };
-    fxRate.rates.push(rate1);
+    var fxRate: FxRate = { fxCurrency: "USD-CAD", rates: [] }; 
+    fxRate.rates.push({ date: new Date(2018, 2, 5), rate: 1.13 });
+    fxRate.rates.push({ date : new Date(2018, 2, 6), rate: 1.10 });
     rates.push(fxRate);
 
-    ////
-
-    var rate2: Rate = { date: new Date(2018, 2, 5), rate: 100 };
-
     var fxRate1: FxRate = { fxCurrency: "USD-JPY", rates: [] }; 
-    fxRate1.rates.push(rate2);
-
-    let rate3: Rate = { date: new Date(2018, 2, 6), rate: 101 };
-    fxRate1.rates.push(rate3);
-
+    fxRate1.rates.push({ date: new Date(2018, 2, 5), rate: 100 });
+    fxRate1.rates.push({ date: new Date(2018, 2, 6), rate: 101 });
     rates.push(fxRate1);
-    return { type: RatesActionTypes.GET_RATES, rates: rates}
+    return rates;
 }
 
 
